@@ -68,3 +68,18 @@ while (true)
 Console.WriteLine();
 Console.WriteLine("Thanks for using Message Logger!");
 allUsers.MessageCount();
+
+//static void AddUser()
+//{
+//    Console.WriteLine();
+//    Console.WriteLine("Let's create a user profile for you.");
+//    Console.Write("What is your name? ");
+//    name = Console.ReadLine();
+//    Console.Write("What is your username? (one word, no spaces!) ");
+//    username = Console.ReadLine();
+//    allUsers.AddUser(new User(name, username));
+//    currentUser = allUsers.GetUser(username);
+//    Console.WriteLine();
+//    Console.WriteLine("To log out of your user profile, enter 'log out'. to quit the application, enter 'quit'");
+
+//}

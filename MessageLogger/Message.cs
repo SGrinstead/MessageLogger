@@ -17,6 +17,7 @@ namespace MessageLogger
             CreatedAt = DateTime.Now;
         }
 
+        //ToString override to return a more useful string
         public override string ToString()
         {
             return $"{CreatedAt.ToString("t")}: {Content}";

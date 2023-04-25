@@ -19,11 +19,13 @@ namespace MessageLogger
             Messages = new List<Message>();
         }
 
+        //Creates new message and adds to list
         public void AddMessage(string content)
         {
             Messages.Add(new Message(content));
         }
 
+        //Writes each message in list with additional info
         public void WriteMessages()
         {
             foreach(var message in Messages)
