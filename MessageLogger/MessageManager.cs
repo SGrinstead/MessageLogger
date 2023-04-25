@@ -22,7 +22,7 @@ namespace MessageLogger
         }
 
         //returns user with matching username or false if no match
-        public dynamic GetUser(string username)
+        public User GetUser(string username)
         {
             foreach(var user in Users)
             {
@@ -31,7 +31,7 @@ namespace MessageLogger
                     return user;
                 }
             }
-            return false;
+            return null;
         }
 
         //Writes how many messages each user wrote
