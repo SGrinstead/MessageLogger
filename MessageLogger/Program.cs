@@ -14,23 +14,34 @@ while (true)
     Console.Write("Add a message: ");
     input = Console.ReadLine();
 
-    if(input.ToLower() == "quit") //exits loop
+    if(input == "")
+    {
+        Console.WriteLine("You can write a better message than that.");
+    }
+    else if(input.ToLower() == "quit") //exits loop
     {
         break;
     }
-    else if (input.ToLower() == "log out")
+    else if (input.ToLower() == "log out" || input.ToLower() == "logout")
     {
-        Console.WriteLine();
-        Console.Write("Would you like to log in to a 'new' or 'existing' user? ");
-        input = Console.ReadLine();
-        if (input.ToLower() == "new") //reates new User in allUsers
+        while(!(input.ToLower() == "new" || input.ToLower() == "existing"))
         {
-            currentUser = AddUser(allUsers);
-        }
-        else if(input.ToLower() == "existing") //finds existing User in allUsers
-        {
-            currentUser = LogIn(allUsers);
-            currentUser.WriteMessages();
+            Console.WriteLine();
+            Console.Write("Would you like to log in to a 'new' or 'existing' user? ");
+            input = Console.ReadLine();
+            if (input.ToLower() == "new") //reates new User in allUsers
+            {
+                currentUser = AddUser(allUsers);
+            }
+            else if (input.ToLower() == "existing") //finds existing User in allUsers
+            {
+                currentUser = LogIn(allUsers);
+                currentUser.WriteMessages();
+            }
+            else
+            {
+                Console.WriteLine("Please enter either 'new' or 'existing'.");
+            }
         }
     }
     else
@@ -48,12 +59,28 @@ allUsers.MessageCount();
 //Helper method to create a new User and add it to allUsers
 static User AddUser(MessageManager allUsers)
 {
+    string name = "";
+    string username = "";
     Console.WriteLine();
     Console.WriteLine("Let's create a user profile for you.");
-    Console.Write("What is your name? ");
-    string name = Console.ReadLine();
-    Console.Write("What is your username? (one word, no spaces!) ");
-    string username = Console.ReadLine();
+    while(name == "")
+    {
+        Console.Write("What is your name? ");
+        name = Console.ReadLine();
+        if(name == "")
+        {
+            Console.WriteLine("Please enter a valid name.");
+        }
+    }
+    while(username == "")
+    {
+        Console.Write("What is your username? (one word, no spaces!) ");
+        username = Console.ReadLine();
+        if(username == "")
+        {
+            Console.WriteLine("Please enter a valid username.");
+        }
+    }
     allUsers.AddUser(new User(name, username));
     Console.WriteLine();
     Console.WriteLine("To log out of your user profile, enter 'log out'. to quit the application, enter 'quit'");
