@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using MessageLogger;
+using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics.Metrics;
 
 MessageManager allUsers = new MessageManager();
 User currentUser;
@@ -17,6 +19,14 @@ while (true)
     if(input.Replace(" ", "") == "")
     {
         Console.WriteLine("You can write a better message than that.");
+    }
+    else if(input.Replace(" ", "").ToLower() == "delete")
+    {
+        currentUser.DeleteMessage();
+    }
+    else if(input.Replace(" ", "") == "edit")
+    {
+        currentUser.EditMessage();
     }
     else if(input.ToLower().Replace(" ", "") == "quit") //exits loop
     {
@@ -90,7 +100,10 @@ static User AddUser(MessageManager allUsers)
     allUsers.AddUser(new User(name, username));
     Console.WriteLine();
     Console.WriteLine("Your new username is " + username);
-    Console.WriteLine("To log out of your user profile, enter 'log out'. to quit the application, enter 'quit'");
+    Console.WriteLine("To log out of your user profile, enter 'log out'");
+    Console.WriteLine("To quit the application, enter 'quit'");
+    Console.WriteLine("To delete a previous message, enter 'delete'");
+    Console.WriteLine("To edit a previous message, enter 'edit'");
     return allUsers.GetUser(username);
 }
 
