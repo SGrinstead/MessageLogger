@@ -28,14 +28,14 @@ namespace MessageLogger.UnitTests
         }
 
         [Fact]
-        public void MessageManager_GetUser_ReturnsUserWithUsernameOrFalse()
+        public void MessageManager_GetUser_ReturnsUserWithUsernameOrNull()
         {
             MessageManager messageManager = new MessageManager();
             User user = new User("Seth", "sgrinstead");
             messageManager.AddUser(user);
 
             Assert.Equal(user, messageManager.GetUser("sgrinstead"));
-            Assert.False(messageManager.GetUser("john"));
+            Assert.Null(messageManager.GetUser("john"));
         }
 
         [Fact]

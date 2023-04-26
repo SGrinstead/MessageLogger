@@ -73,5 +73,19 @@ namespace MessageLogger
                 return recent;
             }
         }
+
+        //returns true if username already exists
+        public bool UsernameIsTaken(string username)
+        {
+            bool taken = false;
+            foreach(var user in Users)
+            {
+                if(username == user.Username)
+                {
+                    taken = true;
+                }
+            }
+            return taken;
+        }
     }
 }
